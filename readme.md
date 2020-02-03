@@ -1,4 +1,4 @@
- #Willkommen bei der Arbeitszeiterfassung. 
+ # Willkommen bei der Arbeitszeiterfassung. 
 
 # Vorab, welche Funktionen aus Aufgabe 3 eingebunden wurden.
 - Eine grafische Oberfläche
