@@ -1,0 +1,170 @@
+<section class="hero is-verlauf is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-2 has-text-white has-text-weight-bold">WorkTime</h1>
+          <p class="subtitle is-4 has-text-sub">Einfache Verwaltung von Arbeitszeiten <br> für jedermann.</p>
+          <a href="#newtime" class="button is-light is-outlined is-rounded">Neue Arbeitszeit hinzufügen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section enter-time user_selector" id="newtime">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title is-3 has-text-white">Neue Arbeitszeit erfassen</h1>
+        <p class="subtitle is-4 has-text-sub">Tragen Sie Ihre Arbeitszeit ein.</p>
+      </div>
+    </div>
+    <form action="/" method="post" onsubmit="return validate()">
+      <div class="input_user_fields">
+        <div class="columns">
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Mitarbeiter wählen</label>
+              <div class="control">
+                <div class="select">
+                  <select name="mitarbeiter" id="mitarbeiter" required>
+                    <option value="0" selected>Mitarbeiter wählen</option>
+                    {{#each mitarbeiter }}
+                    <option value="{{id}}">{{nachname}}, {{vorname}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Kunde wählen</label>
+              <div class="control">
+                <div class="select">
+                  <select name="kunde" id="kunde" onchange="getProjekt(this.value)" required>
+                    <option value="0" selected>Kunde wählen</option>
+                    {{#each firmennamen }}
+                    <option value="{{id}}">{{firmenname}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Projekt wählen</label>
+              <div class="control">
+                <div class="select">
+                  <select name="projekt" id="projekt" required>
+                    <option value="0" selected>Projekt wählen</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Datum wählen</label>
+              <div class="control">
+                <input class="input" type="date" name="datum" id="datum" placeholder="1.1.2020" required>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Arbeitsbeginn</label>
+              <div class="control">
+                <input class="input" type="time" step="900" id="arbeitsbeginn" name="arbeitsbeginn" required>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Arbeitseinde</label>
+              <div class="control">
+                <input class="input" type="time" step="900" id="arbeitsende" name="arbeitsende" required>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Pause in Minuten</label>
+              <div class="control">
+                <input class="input" type="number" step="15" id="pause" name="pause" required>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">Fahrtkosten in KM</label>
+              <div class="control">
+                <input class="input" placeholder="0" min="0" type="number" step="1" id="fahrtkosten" name="fahrtkosten" required>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="columns">
+          <div class="column is-9">
+
+            <div class="field">
+              <label class="label has-text-white">Was wurde erledigt?</label>
+              <div class="control">
+                <input class="input" type="text" id="erledigt" name="erledigt" required>
+              </div>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="field">
+              <label class="label has-text-white">&nbsp</label>
+              <div class="control">
+                <button class="btn button" type="submit">Absenden</button>
+                <input id="abUNIX" name="abUNIX" type="hidden" value="">
+                <input id="aeUNIX" name="aeUNIX" type="hidden" value="">
+                <input id="arbeitszeit" name="arbeitszeit" type="hidden" value="">
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <section class="section">
+          <div class="columns">
+            <div class="column">
+              <p class="subtitle is-5 has-text-sub">Sollten Probleme auftreten, so wenden Sie sich bitte an unseren
+                technischen Support!</p>
+              <a href="">Kontakt</a>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="/js/index.js"></script>

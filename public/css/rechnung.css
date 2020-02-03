@@ -1,0 +1,21 @@
+.rechnung {
+  margin-top: 200px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+.bestellpositionen {
+  border: 1px solid grey;
+  width: 100%;
+  text-align: left;
+}
+.bestellpositionen th {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+.bestellpositionen td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#right{
+  align: right
+}
