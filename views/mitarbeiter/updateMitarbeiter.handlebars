@@ -1,0 +1,77 @@
+
+    <section class="section nav-spacer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-7">
+                    <h1 class="title is-2 has-text-weight-bold">Kunde anlegen</h1>
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <strong>Legen Sie einen neuen Kunden an</strong>
+                                        
+                                            <form action="/update_mitarbeiter/{{data.0.id}}" method="post">
+                                            <div class="field">
+                                                    <label class="label">Vorname</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name="vorname"
+                                                             value="{{data.0.vorname}}"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <label class="label">Nachname</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name="nachname"
+                                                            value="{{data.0.nachname}}" required>
+                                                    </div>
+                                                </div>      
+
+                                                <button class="btn button" type="submit">Absenden</button>
+                                            </form>
+                                        
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="column is-5">
+                    <br><br><br>
+                    <article class="message is-link">
+                        <div class="message-header">
+                            <p>Wichtiger Hinweis zur Anlage von Kunden</p>
+                            <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body">
+                            Lorem ipsum dolor sit amet, consectetur adidpiscing elit. <strong>Pellentesque risus
+                                mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet
+                            fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac
+                            <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor,
+                            tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem
+                            eget, facilisis sodales sem.
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="">
+
+            </div>
+        </div>
+    </div>
+</div>

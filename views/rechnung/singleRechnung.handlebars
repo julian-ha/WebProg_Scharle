@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/css/rechnung.css" />
+<div class="rechnung">
+  
+
+    <p>Rechnung an:</p>
+    <table>
+      <tr>
+        <td>{{kundendaten.[0].firmenname}}</td>
+      </tr>
+      <tr>
+        <td>Testadresse 123</td>
+      </tr>
+      <tr>
+        <td>73434 Aalen</td>
+      </tr>
+    </table>
+
+    <hr />
+    <p>Rechnung von</p>
+    <p>WorkTime GmbH München</p>
+    <p>Zeitraum: {{zeitraum}}</p>
+    <hr />
+    <br />
+    <h2>Rechnung</h2>
+    <p>Re-Nr: 934324</p>
+
+    <h3>Bestell Positionen</h3>
+    <table class="bestellpositionen table">
+      <tr>
+        <th>Datum</th>
+        <th>Bezeichnung</th>
+        <th>Projekt</th>
+        <th>Mitarbeiter</th>
+        <th>Preis</th>
+      </tr>
+      {{#each rechnungsdaten}}
+      <tr>
+        <td>{{datum}}</td>
+        <td>{{was_wurde_erledigt}}</td>
+        <td>{{projektname}}</td>
+        <td>{{nachname}}, {{vorname}}</td>
+        <td>{{preis}} €</td>
+      </tr>
+  {{/each}}        
+    </table>
+  
+  
+  <hr>
+  <table align="right" class="table">
+  <tr>
+    <td>Summe  </td>
+    <td>{{preisdaten.[0].summe}} €</td>
+  </tr>
+  <tr>
+    <td>Mehrwertssteuer (19%)  </td>
+    <td>{{preisdaten.[0].mehrwertsteuer}} €</td>
+  </tr>
+  <tr>
+    <td>Gesamtpreis</td>
+    <td>{{preisdaten.[0].gesamtpreis}} €</td>
+  </tr>
+  </table>
+
+  
+  <br><br><br><br><br><br><br>
+    <p>Fahrtkostenpauschale von 0.25€ pro gefahreren Kilometer sind in den Preisen bereits eingerechnet.</p>
+    <p>Bitte entrichten Sie den Restbetrag in den nächsten 14 Tagen.</p>
+    <br />
+
+    <ul>
+      <li>WorkTime GmbH München</li>
+      <li>Kleebauerring 1</li>
+      <li>Deutsche Bank: DE902131932123123</li>
+      <li>Sparkasse BW: DE23919293919231</li>
+    </ul>
+
+</div>
