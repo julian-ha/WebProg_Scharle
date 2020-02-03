@@ -7,14 +7,14 @@
  ## Zus Ausführung notwendigen Anweisungen
  - Download des Ordners
  - Installieren von Node.js
- Installieren der nötigen packages mit folgenden Anweisungen:
+ ##### Installieren der nötigen packages mit folgenden Anweisungen:
  - npm install express
  - npm install express-handlebars
  - npm install mysql
  - npm install react react-dom
  - npm install react
  - npm install body-parser
- Innerhalb des Projekts die Server.js starten
+ ##### Innerhalb des Projekts die Server.js starten
  - node server.js
  
  
