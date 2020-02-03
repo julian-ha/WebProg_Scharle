@@ -1,19 +1,19 @@
-Willkommen bei der Arbeitszeiterfassung. 
+ #Willkommen bei der Arbeitszeiterfassung. 
 
-Vorab, welche Funktionen aus Aufgabe 3 eingebunden wurden.
+# Vorab, welche Funktionen aus Aufgabe 3 eingebunden wurden.
 - Eine grafische Oberfläche
 - Das Anlegen und Verwalten von Projekten und Kunden
 - Das Speichern und Verwalten von Stundensätzen je Kunde
 - Rechnungserstellung für Kunden/ jeden Arbeitsauftrag
 
-zusätzlich: 
+## zusätzlich: 
 - die Verwaltung von Mitarbeitern
 - Zuweisung eines Projekts zu einem Kunden
 
 
 
 
-Genauere Erläuterung
+# Genauere Erläuterung
 
 In diesem Programm können Mitarbeiter, Kunden sowie Projekte angelegt sowie gepflegt werden.
 Auf das löschen dieser Daten wurde verzichtet, da diese teilweise in Verbindung stehen und so andere Daten unbrauchbar gemacht werden könnten.
@@ -34,12 +34,12 @@ Diese beträgt 0.25€ pro gefahreren Kilometer.
 
 
 
-Vorgehensweise:
--Erstellung einer MySQL Datenbank zur Seicherung der generierten Daten des Arbeitszeitprogramms
--Erstellung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
--Verwaltung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
--Erstellung Layout der Arbeitszeiterfassung
--Speicherung der Arbeitszeit in der Datenbank
--Überprüfung der im Arbeitszeitformular übertragenen Daten
--Erstellung Übersichtsseite der Arbeitszeiten
--Rechnungserstellung
+# Vorgehensweise:
+- Erstellung einer MySQL Datenbank zur Seicherung der generierten Daten des Arbeitszeitprogramms
+- Erstellung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
+- Verwaltung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
+- Erstellung Layout der Arbeitszeiterfassung
+- Speicherung der Arbeitszeit in der Datenbank
+- Überprüfung der im Arbeitszeitformular übertragenen Daten
+- Erstellung Übersichtsseite der Arbeitszeiten
+- Rechnungserstellung
