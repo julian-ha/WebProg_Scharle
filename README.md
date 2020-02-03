@@ -38,11 +38,11 @@ Diese beträgt 0.25€ pro gefahreren Kilometer.
 
 
 # Vorgehensweise:
--Erstellung einer MySQL Datenbank zur Seicherung der generierten Daten des Arbeitszeitprogramms
--Erstellung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
--Verwaltung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
--Erstellung Layout der Arbeitszeiterfassung
--Speicherung der Arbeitszeit in der Datenbank
--Überprüfung der im Arbeitszeitformular übertragenen Daten
--Erstellung Übersichtsseite der Arbeitszeiten
--Rechnungserstellung
+* Erstellung einer MySQL Datenbank zur Seicherung der generierten Daten des Arbeitszeitprogramms
+* Erstellung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
+* Verwaltung von Mitarbeitern, Kunden und Projekten, Layout sowie Routen mit Abspeicherung in Datenbank
+* Erstellung Layout der Arbeitszeiterfassung
+* Speicherung der Arbeitszeit in der Datenbank
+* Überprüfung der im Arbeitszeitformular übertragenen Daten
+* Erstellung Übersichtsseite der Arbeitszeiten
+* Rechnungserstellung
