@@ -1,5 +1,13 @@
  # Willkommen bei der Arbeitszeiterfassung. 
  
+ ## Das Projekt befindet sich auf Glitch.com
+ - Accountname julian-ha
+ - Projektname hierfür ist cuddly-jackfruit
+ 
+ ## Zus Ausführung notwendigen Anweisungen
+ 
+ 
+ # Vorab Information
  Für die Umsetzung wurde eine MySQL Datenbank verwendet, die sich auf unserem Webserver befindet.
  Die Zugangsdaten hierfür sind:
  - Link
