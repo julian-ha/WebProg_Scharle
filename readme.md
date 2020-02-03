@@ -2,11 +2,10 @@
  
  Für die Umsetzung wurde eine MySQL Datenbank verwendet, die sich auf unserem Webserver befindet.
  Die Zugangsdaten hierfür sind:
- Link
- Benutzername:
- Passwort:
- 
- Datenbankname: k121749_Web_Scharle
+ - Link
+ - Benutzername:
+ - Passwort:
+ - Datenbankname: k121749_Web_Scharle
  
 
 # Vorab, welche Funktionen aus Aufgabe 3 eingebunden wurden.
