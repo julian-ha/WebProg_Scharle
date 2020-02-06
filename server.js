@@ -32,7 +32,6 @@ app.get("/", async (req, res) => {
   var mitarbeiter = await database.queryDB(sqlmitarbeiter);
   
   res.render("index", {
-    style: "index",
     titel: "Startseite",
     firmennamen: result,
     projektnamen: projekt,
@@ -45,7 +44,6 @@ app.post('/', async (req, res) =>{
   var sql = 'INSERT INTO arbeitszeit (projekt_id, mitarbeiter_id, datum, arbeitsbeginn, arbeitsende, pause, geleistete_Stunden, fahrtkosten, was_wurde_erledigt) Values (?,?,?,?,?,?,?,?,?)';
   var variables = [req.body.projekt, req.body.mitarbeiter, req.body.datum, req.body.abUNIX, req.body.aeUNIX, req.body.pause, req.body.arbeitszeit, req.body.fahrtkosten, req.body.erledigt];
   var arbeitszeit = await database.queryDB(sql, variables);
-  //Abspeichern der Daten in der Datenbank
   res.redirect('/');
 });
 
@@ -65,7 +63,6 @@ app.get('/arbeitszeiten', async (req, res) =>{
   var sql = 'SELECT a.id, k.firmenname, p.projektname, m.vorname, m.nachname, a.geleistete_Stunden,a.was_wurde_erledigt AS erledigt, a.geleistete_Stunden *k.stundensatz AS kosten FROM arbeitszeit a, kunde k , projekt p, mitarbeiter m WHERE a.projekt_id =p.id AND m.id =a.mitarbeiter_id AND p.kunden_id = k.id';
   var arbeitszeiten = await database.queryDB(sql);
   res.render('arbeitszeiten/arbeitszeiten', {
-    style: "index",
     titel: "Arbeitszeiten Übersicht",
     data: arbeitszeiten
   })
@@ -85,6 +82,7 @@ app.get('/rechnung/:id', async (req, res) =>{
   }
   
   if( kundendaten[0].rechnung == 1 ){
+    //einzelne Rechnung
     var sqlRD = 'SELECT DATE_FORMAT(a.datum, "%d.%m.%Y") AS datum, a.was_wurde_erledigt, p.projektname,m.vorname, m.nachname, ROUND((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten),2) AS preis FROM kunde k, mitarbeiter m, arbeitszeit a, projekt p WHERE p.id = a.projekt_id AND a.mitarbeiter_id = m.id AND k.id = p.kunden_id AND a.id = ?';
     var sqlP = 'SELECT ROUND((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten),2) AS summe, ROUND (((k.stundensatz *a.geleistete_Stunden + 0.25 * a.fahrtkosten) * 0.19), 2) AS mehrwertsteuer, ROUND(((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten) /100 *119),2) AS gesamtpreis FROM kunde k, arbeitszeit a, projekt p WHERE a.projekt_id = p.id AND p.kunden_id = k.id AND a.id = ?';
     var variables = [req.params.id];
@@ -92,16 +90,15 @@ app.get('/rechnung/:id', async (req, res) =>{
     
   }
   else{
+    //Quartalsrechnung
     var months = database.getQuartalszeiten(kundendaten[0].month, kundendaten[0].year);
     var sqlRD = 'SELECT DATE_FORMAT(a.datum, "%d.%m.%Y") AS datum, a.was_wurde_erledigt, p.projektname, m.vorname, m.nachname, ROUND((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten),2) AS preis FROM kunde k, projekt p, arbeitszeit a, mitarbeiter m WHERE a.projekt_id = p.id AND p.kunden_id = k.id AND a.mitarbeiter_id = m.id AND a.datum BETWEEN ? AND ? AND k.id = ?';
     var sqlP = 'SELECT SUM(ROUND((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten),2)) AS summe, SUM(ROUND (((k.stundensatz *a.geleistete_Stunden + 0.25 * a.fahrtkosten) * 0.19), 2)) AS mehrwertsteuer, SUM(ROUND(((k.stundensatz * a.geleistete_Stunden + 0.25 * a.fahrtkosten) /100 *119),2)) AS gesamtpreis FROM kunde k, arbeitszeit a, projekt p WHERE a.projekt_id = p.id AND p.kunden_id = k.id AND a.datum BETWEEN ? AND ? AND k.id = ?';
     var variables = [months[0], months[1], kundendaten[0].id];
-    var zeitraum = database.getQuartal(kundendaten[0].month, kundendaten[0].year);
+    var zeitraum = months[2];
   }
   var rechnungsdaten = await database.queryDB(sqlRD, variables);
   var preis = await database.queryDB(sqlP, variables)
-  
-  
   
   res.render('rechnung/singleRechnung', {
     titel: 'Rechnung',
@@ -122,7 +119,6 @@ app.get('/kunden', async (req, res) => {
   var sql = 'SELECT k.*, r.beschreibung FROM kunde k , rechnungformat r WHERE r.id = k.rechnung ORDER BY k.firmenname';
   var kunden = await database.queryDB(sql);
   res.render('kunde/kunden', {
-    style: 'index',
     titel:"Kundenportal",
     data: kunden
   });
@@ -131,7 +127,6 @@ app.get('/kunden', async (req, res) => {
 //Kunde anlegen Seite aufrufen
 app.get('/kunde_anlegen', (req, res) => {
   res.render('kunde/kundeAnlegen',{
-    style: 'index',
     titel: "Kunde anlegen"
   });
 });
@@ -155,7 +150,6 @@ app.get('/update_kunde/:id', async (req, res) =>{
   }
   
   res.render('kunde/updateKunde',{
-    style: "index",
     titel: 'Kundendaten aktualisieren',
     data: kunde
   });
@@ -170,8 +164,6 @@ app.post('/update_kunde/:id' , async (req, res) =>{
   var sql = 'UPDATE kunde SET firmenname = ?, stundensatz = ?, rechnung = ? WHERE id = ?';
   var variables = [req.body.kundenname, req.body.stundensatz, req.body.rechnung, req.params.id];
   var update = await database.queryDB(sql, variables);
- //try catch oder davor abfrage
-  console.log(update);
   if (update.changedRows == 0 ){
     res.status(404).send({error: `Kunden ID ${req.params.id} wurde nicht gefunden. Update nicht möglich.`});
   }
@@ -195,7 +187,6 @@ app.get('/projekte', async (req, res,) => {
   var sql = 'SELECT p.id, p.projektname, k.firmenname, SUM(a.geleistete_Stunden) AS stunden, SUM((a.geleistete_Stunden) * k.stundensatz + a.fahrtkosten * 0.25) AS kosten FROM projekt p, kunde k, arbeitszeit a WHERE p.kunden_id = k.id AND a.projekt_id = p.id GROUP BY p.id, p.projektname, k.firmenname UNION SELECT p.id, p.projektname, k.firmenname, 0 AS stunden, 0 AS kosten FROM projekt p, kunde k WHERE p.kunden_id = k.id AND p.id NOT IN (SELECT DISTINCT projekt_id FROM arbeitszeit)';
   var projekte = await database.queryDB(sql);
   res.render('projekt/projekte', {
-    style: 'index',
     titel:"Projektportal",
     data: projekte
   });
@@ -207,7 +198,6 @@ app.get('/projekt_anlegen', async (req, res) =>{
   var sql = 'SELECT k.*, r.beschreibung FROM kunde k , rechnungformat r WHERE r.id = k.rechnung ORDER BY k.firmenname';
   var firmennamen = await database.queryDB(sql);
   res.render("projekt/projektAnlegen", {
-    style: "index",
     titel: "Projekt anlegen",
     data: firmennamen
   });
@@ -233,7 +223,6 @@ app.get('/update_projekt/:id', async (req, res) =>{
   }
   
   res.render('projekt/updateProjekt',{
-    style: 'index',
     titel: 'Projekt aktualisieren',
     data: projekt
   })
@@ -265,7 +254,6 @@ app.get('/mitarbeiter', async (req, res) =>{
   var sql = 'SELECT m.id, m.vorname, m.nachname, SUM(geleistete_Stunden) AS stunden FROM mitarbeiter m , arbeitszeit a WHERE m.id = a.mitarbeiter_id GROUP BY m.id, m.vorname, m.nachname UNION SELECT id, vorname, nachname, 0 AS stunden FROM mitarbeiter WHERE id NOT IN (SELECT DISTINCT mitarbeiter_id FROM arbeitszeit) ORDER BY nachname, vorname';
   var mitarbeiter = await database.queryDB(sql);
   res.render('mitarbeiter/mitarbeiter' , {
-    style: 'index',
     titel: 'Mitarbeiterprotal',
     data: mitarbeiter
   });
@@ -274,7 +262,6 @@ app.get('/mitarbeiter', async (req, res) =>{
 //Mitarbeiter anlegen Seite
 app.get('/mitarbeiter_anlegen', (req, res) =>{
   res.render('mitarbeiter/mitarbeiterAnlegen',{
-    style: 'index',
     titel: 'Mitarbeiter anlegen'
   });
   
@@ -299,7 +286,6 @@ app.get('/update_mitarbeiter/:id', async (req, res) =>{
   }
   
   res.render('mitarbeiter/updateMitarbeiter', {
-    style: 'index',
     titel: 'Mitarbeiter aktualisieren',
     data: mitarbeiter
   });
