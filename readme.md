@@ -3,6 +3,7 @@
  ## Das Projekt befindet sich auf Glitch.com
  - Accountname julian-ha
  - Projektname hierfür ist cuddly-jackfruit
+ - Link: https://cuddly-jackfruit.glitch.me/
  
  ## Zus Ausführung notwendigen Anweisungen
  - Download des Ordners
