@@ -5,7 +5,7 @@
  - Projektname hierfür ist cuddly-jackfruit
  - Link: https://cuddly-jackfruit.glitch.me/
  
- ## Zus Ausführung notwendigen Anweisungen
+ ## Zur Ausführung notwendigen Anweisungen
  - Download des Ordners
  - Installieren von Node.js
 
