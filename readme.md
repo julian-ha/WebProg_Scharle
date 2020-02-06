@@ -41,12 +41,12 @@ Auf das löschen dieser Daten wurde verzichtet, da diese teilweise in Verbindung
 Gelöst werden könnten dies mit einem Datenbankenfeld für die Aktivität bzw is_active.
 
 Arbeitszeiten können über das Formular auf der Startseite ausgefüllt werden. 
-Die hierfür notwendigen Daten (Mitarbeiter, Kunde, Projekt) werden aus der Datenbank geladen.
+Die hierfür notwendigen Daten (Mitarbeiter, Kunde, Projekt) werden aus der Datenbank geladen und auch nur diese Daten stehen zur Auswahl bereit.
 Es werden auch nur Projekte des voraus gewählten Kunden angezeigt.
 
-Arbeitszeiten können auf dem Reiter Verwaltung - Arbeitszeiten eingesehen werden. Am Ende der Tabelle ist immer ein Feld zur Erstellung der Rechung
-für den spezifischen Arbeitsauftrag.
-Je nachdem ob der Kunde nach jedem Auftrag Quartalsweise eine Rechnung erstellt haben möchte werden alle Rechnungspositionen aufgelistet.
+Arbeitszeiten können auf dem Reiter Verwaltung - Arbeitszeiten eingesehen werden. Am Ende der Tabelle ist immer ein Feld zur Erstellung der Rechung für den spezifischen Arbeitsauftrag.
+Je nachdem, ob der Kunde nach jedem Auftrag Quartalsweise eine Rechnung erstellt haben möchte werden alle Rechnungspositionen aufgelistet.
+Kunden, Projekte und Mitarbeiter können auf den jeweiligen Verwaltungsseite in einer Tabelle eingesehen werden, geändert werden sowie neue Datensätze erstellt werden. 
 
 
 Alle Preise auf der Seite sowie auf den Rechnungen beinhalten schon die Fahrtkostenpauschale.
